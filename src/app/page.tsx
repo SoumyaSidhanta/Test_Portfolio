@@ -7,13 +7,13 @@ import NeonButton from '@/components/NeonButton';
 export default function HomePage() {
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-white">
-      
+
       {/* Subtle Glow Behind Hero */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[500px] bg-neon/5 blur-[120px] rounded-[100%] pointer-events-none"></div>
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-20 px-4 flex flex-col items-center text-center max-w-4xl mx-auto">
-        
+      <section className="relative pt-20 pb-20 px-4 flex flex-col items-center text-center max-w-4xl mx-auto">
+
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neon/10 border border-neon/20 mb-8 mt-10">
           <Sparkles className="w-4 h-4 text-neon" />
@@ -36,7 +36,7 @@ export default function HomePage() {
           <NeonButton href="/request" size="md" className="w-full sm:w-auto">
             <Rocket className="w-4 h-4" /> Request a Tool
           </NeonButton>
-          
+
           <NeonButton href="/tools" variant="outline" size="md" className="w-full sm:w-auto rounded-full px-6 text-gray-300">
             View Tools <ArrowRight className="w-4 h-4 inline-block ml-1" />
           </NeonButton>
@@ -69,7 +69,7 @@ export default function HomePage() {
       {/* Features Grid */}
       <section className="px-4 pb-32 max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          
+
           {/* Feature 1 */}
           <div className="bg-[#111111] border border-white/5 rounded-2xl p-8 hover:bg-[#141414] transition-colors">
             <div className="w-10 h-10 rounded-lg bg-[#1a1a1a] border border-white/10 flex items-center justify-center mb-6">
