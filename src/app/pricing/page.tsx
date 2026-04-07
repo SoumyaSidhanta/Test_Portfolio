@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, DollarSign } from 'lucide-react';
+import { Check, DollarSign, Sparkles } from 'lucide-react';
 import NeonButton from '@/components/NeonButton';
 import type { Metadata } from 'next';
 
@@ -51,23 +51,20 @@ const plans = [
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pt-32 pb-20 px-4 flex flex-col items-center">
-      
-      {/* Background Subtle Glow */}
-      <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] bg-neon/5 blur-[100px] rounded-[100%] pointer-events-none"></div>
+    <div className="min-h-screen text-white pt-32 pb-20 px-4 flex flex-col items-center relative">
 
       <div className="max-w-6xl w-full relative z-10 flex flex-col items-center">
         
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neon/10 border border-neon/20 mb-6">
+        <div className="neon-badge mb-6 animate-fade-in">
           <DollarSign className="w-4 h-4 text-neon" />
-          <span className="text-neon text-xs font-semibold uppercase tracking-wider">Service-Based Pricing</span>
+          <span className="text-neon text-xs font-semibold uppercase tracking-widest">Service-Based Pricing</span>
         </div>
 
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Transparent Pricing
+        <div className="text-center mb-16 animate-slide-up">
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">
+            Transparent <span className="text-neon-gradient text-glow">Pricing</span>
           </h1>
           <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             Choose the right tier based on your tool complexity. Final pricing shared after requirement discussion.
@@ -80,18 +77,24 @@ export default function PricingPage() {
             <div
               key={i}
               className={`
-                bg-[#111111] rounded-2xl p-8 flex flex-col relative
-                ${plan.popular ? 'border-2 border-neon/30' : 'border border-white/5'}
+                glass-card p-8 flex flex-col relative animate-fade-in
+                ${plan.popular ? 'plan-popular' : ''}
               `}
+              style={{ animationDelay: `${i * 0.15}s` }}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-neon/10 border border-neon/30 text-neon text-xs font-bold rounded-full uppercase tracking-wider">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-[rgba(0,255,136,0.1)] border border-[rgba(0,255,136,0.25)] text-neon text-xs font-bold rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow-[0_0_15px_rgba(0,255,136,0.1)]">
+                  <Sparkles className="w-3 h-3" />
                   Most Popular
                 </div>
               )}
 
               <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
-              <p className={`text-3xl font-extrabold mb-4 ${plan.popular ? 'text-neon drop-shadow-[0_0_8px_rgba(0,255,136,0.3)]' : 'text-white'}`}>
+              <p className={`text-3xl font-extrabold mb-4 ${
+                plan.popular 
+                  ? 'text-neon-gradient text-glow' 
+                  : 'text-white'
+              }`}>
                 {plan.price}
               </p>
               <p className="text-sm text-gray-400 mb-8 flex-1 leading-relaxed">
@@ -101,7 +104,9 @@ export default function PricingPage() {
               <ul className="space-y-4 mb-8">
                 {plan.features.map((f, j) => (
                   <li key={j} className="flex items-start gap-3 text-sm text-gray-300">
-                    <Check className="w-4 h-4 text-neon shrink-0 mt-0.5" />
+                    <div className="w-5 h-5 rounded-full bg-[rgba(0,255,136,0.08)] border border-[rgba(0,255,136,0.15)] flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 text-neon" />
+                    </div>
                     <span>{f}</span>
                   </li>
                 ))}

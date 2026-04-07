@@ -51,9 +51,9 @@ export default function FeedbackPage() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center px-4">
-        <div className="text-center max-w-md bg-[#111111] p-12 rounded-2xl border border-white/5 shadow-2xl">
-          <div className="w-16 h-16 rounded-full bg-neon/10 border border-neon/30 flex items-center justify-center mb-6 mx-auto">
+      <div className="min-h-screen flex items-center justify-center px-4 relative">
+        <div className="text-center max-w-md neon-border-card p-12 animate-slide-up">
+          <div className="w-16 h-16 rounded-full bg-[rgba(0,255,136,0.08)] border border-[rgba(0,255,136,0.2)] flex items-center justify-center mb-6 mx-auto shadow-[0_0_30px_rgba(0,255,136,0.1)]">
             <CheckCircle2 className="w-8 h-8 text-neon" />
           </div>
           <h2 className="text-2xl font-bold mb-3 text-white">Feedback Logged!</h2>
@@ -67,23 +67,20 @@ export default function FeedbackPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pt-32 pb-20 px-4 flex flex-col items-center">
-      
-      {/* Background Subtle Glow */}
-      <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] bg-neon/5 blur-[100px] rounded-[100%] pointer-events-none"></div>
+    <div className="min-h-screen text-white pt-32 pb-20 px-4 flex flex-col items-center relative">
 
       <div className="max-w-2xl w-full relative z-10 flex flex-col items-center">
         
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neon/10 border border-neon/20 mb-6">
+        <div className="neon-badge mb-6 animate-fade-in">
           <MessageSquare className="w-4 h-4 text-neon" />
-          <span className="text-neon text-xs font-semibold uppercase tracking-wider">System Feedback</span>
+          <span className="text-neon text-xs font-semibold uppercase tracking-widest">System Feedback</span>
         </div>
 
         {/* Header */}
-        <div className="text-center mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Share Your Experience
+        <div className="text-center mb-10 animate-slide-up">
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">
+            Share Your <span className="text-neon-gradient text-glow">Experience</span>
           </h1>
           <p className="text-gray-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
             Your telemetry helps us build better tools. Rate your experience and analyze our performance.
@@ -91,11 +88,10 @@ export default function FeedbackPage() {
         </div>
 
         {/* Form */}
-        <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 md:p-8 w-full shadow-2xl">
+        <div className="neon-border-card p-6 md:p-8 w-full animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <form onSubmit={handleSubmit} className="space-y-6 flex flex-col">
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Name */}
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-400">Name</label>
                 <input
@@ -109,7 +105,6 @@ export default function FeedbackPage() {
                 />
               </div>
 
-              {/* Email */}
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-400">Email Address</label>
                 <input
@@ -125,7 +120,7 @@ export default function FeedbackPage() {
             </div>
 
             {/* Rating */}
-            <div className="space-y-2 py-4 border-y border-[#222] my-4 flex flex-col items-center">
+            <div className="space-y-2 py-5 border-y border-[rgba(0,255,136,0.06)] my-4 flex flex-col items-center">
               <label className="text-sm font-medium text-gray-400 mb-3">
                 Overall Experience Rating
               </label>
@@ -155,11 +150,11 @@ export default function FeedbackPage() {
               <NeonButton type="submit" disabled={loading} className="w-full h-12">
                 {loading ? (
                   <>
-                    <Loader2 className="w-5 h-5 animate-spin mr-2" /> Saving Feedback...
+                    <Loader2 className="w-5 h-5 animate-spin" /> Saving Feedback...
                   </>
                 ) : (
                   <>
-                    <Send className="w-4 h-4 mr-2" /> Submit Feedback
+                    <Send className="w-4 h-4" /> Submit Feedback
                   </>
                 )}
               </NeonButton>

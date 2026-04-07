@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, User, MessageSquare, Send, Loader2, MapPin, Clock } from 'lucide-react';
+import { Mail, Clock, MapPin, Send, Loader2 } from 'lucide-react';
 import NeonButton from '@/components/NeonButton';
 
 export default function ContactPage() {
@@ -42,27 +42,53 @@ export default function ContactPage() {
     }
   };
 
+  const infoCards = [
+    {
+      icon: Mail,
+      title: 'Email Us',
+      content: (
+        <a href="mailto:contact.ssmtechlabs@gmail.com" className="text-base text-white hover:text-neon transition-all duration-300 break-all">
+          contact.ssmtechlabs@gmail.com
+        </a>
+      ),
+    },
+    {
+      icon: Clock,
+      title: 'Response Time',
+      content: (
+        <p className="text-base text-white">
+          Within <span className="text-neon font-semibold text-glow">24 hours</span>
+        </p>
+      ),
+    },
+    {
+      icon: MapPin,
+      title: 'Website',
+      content: (
+        <a href="https://ssmtechlabs.com" target="_blank" rel="noreferrer" className="text-base text-white hover:text-neon transition-all duration-300">
+          ssmtechlabs.com
+        </a>
+      ),
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pt-32 pb-20 px-4 flex flex-col items-center">
-      
-      {/* Background Subtle Glow */}
-      <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] bg-neon/5 blur-[100px] rounded-[100%] pointer-events-none"></div>
+    <div className="min-h-screen text-white pt-32 pb-20 px-4 flex flex-col items-center relative">
 
       <div className="max-w-6xl w-full relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-16 flex flex-col items-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neon/10 border border-neon/20 mb-6">
+        <div className="text-center mb-16 flex flex-col items-center animate-slide-up">
+          <div className="neon-badge mb-6">
             <Mail className="w-4 h-4 text-neon" />
-            <span className="text-neon text-xs font-semibold uppercase tracking-wider">Get in Touch</span>
+            <span className="text-neon text-xs font-semibold uppercase tracking-widest">Get in Touch</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Contact Us
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">
+            Contact <span className="text-neon-gradient text-glow">Us</span>
           </h1>
           <p className="text-gray-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-            Have a question or want to discuss a project? We'd love to hear from you.
+            Have a question or want to discuss a project? We&apos;d love to hear from you.
           </p>
         </div>
 
@@ -70,54 +96,33 @@ export default function ContactPage() {
           
           {/* Contact Info */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="bg-[#111111] border border-white/5 p-6 rounded-2xl flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-[#1a1a1a] border border-white/10 flex items-center justify-center shrink-0">
-                <Mail className="w-5 h-5 text-neon" />
-              </div>
-              <div>
-                <h3 className="text-sm font-bold text-gray-400 mb-1">Email Us</h3>
-                <a href="mailto:contact.ssmtechlabs@gmail.com" className="text-base text-white hover:text-neon transition-colors break-all">
-                  contact.ssmtechlabs@gmail.com
-                </a>
-              </div>
-            </div>
-
-            <div className="bg-[#111111] border border-white/5 p-6 rounded-2xl flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-[#1a1a1a] border border-white/10 flex items-center justify-center shrink-0">
-                <Clock className="w-5 h-5 text-neon" />
-              </div>
-              <div>
-                <h3 className="text-sm font-bold text-gray-400 mb-1">Response Time</h3>
-                <p className="text-base text-white">
-                  Within <span className="text-neon font-semibold">24 hours</span>
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-[#111111] border border-white/5 p-6 rounded-2xl flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-[#1a1a1a] border border-white/10 flex items-center justify-center shrink-0">
-                <MapPin className="w-5 h-5 text-neon" />
-              </div>
-              <div>
-                <h3 className="text-sm font-bold text-gray-400 mb-1">Website</h3>
-                <a href="https://ssmtechlabs.com" target="_blank" rel="noreferrer" className="text-base text-white hover:text-neon transition-colors">
-                  ssmtechlabs.com
-                </a>
-              </div>
-            </div>
+            {infoCards.map((card, i) => {
+              const Icon = card.icon;
+              return (
+                <div key={i} className="glass-card p-6 flex items-start gap-4 animate-fade-in" style={{ animationDelay: `${i * 0.1}s` }}>
+                  <div className="neon-icon-box shrink-0">
+                    <Icon className="w-5 h-5 text-neon" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-gray-400 mb-1">{card.title}</h3>
+                    {card.content}
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-3">
-            <div className="bg-[#111111] border border-white/5 p-6 md:p-8 rounded-2xl h-full shadow-2xl flex flex-col justify-center">
+          <div className="lg:col-span-3 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <div className="neon-border-card p-6 md:p-8 h-full flex flex-col justify-center">
               {sent ? (
                 <div className="flex flex-col items-center justify-center h-full text-center py-10">
-                  <div className="w-16 h-16 rounded-full bg-neon/10 border border-neon/30 flex items-center justify-center mb-6">
+                  <div className="w-16 h-16 rounded-full bg-[rgba(0,255,136,0.08)] border border-[rgba(0,255,136,0.2)] flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(0,255,136,0.1)]">
                     <Mail className="w-8 h-8 text-neon" />
                   </div>
                   <h3 className="text-2xl font-bold mb-3 text-white">Message Sent!</h3>
                   <p className="text-gray-400">
-                    Thank you! We'll get back to you within 24 hours.
+                    Thank you! We&apos;ll get back to you within 24 hours.
                   </p>
                 </div>
               ) : (
@@ -164,11 +169,11 @@ export default function ContactPage() {
                     <NeonButton type="submit" disabled={loading} className="w-full h-12">
                       {loading ? (
                         <>
-                          <Loader2 className="w-5 h-5 animate-spin mr-2" /> Sending...
+                          <Loader2 className="w-5 h-5 animate-spin" /> Sending...
                         </>
                       ) : (
                         <>
-                          <Send className="w-4 h-4 mr-2" /> Send Message
+                          <Send className="w-4 h-4" /> Send Message
                         </>
                       )}
                     </NeonButton>

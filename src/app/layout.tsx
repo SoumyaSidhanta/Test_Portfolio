@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import NeonBackground from '@/components/NeonBackground';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -32,9 +33,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
-      <body className="min-h-screen flex flex-col antialiased bg-theme-bg text-theme-fg selection:bg-neon/30 selection:text-white font-sans">
+      <body className="min-h-screen flex flex-col antialiased bg-[#050508] text-[#ededed] font-sans">
+        <NeonBackground />
         <Navbar />
-        <main className="flex-1 overflow-x-hidden relative">
+        <main className="flex-1 overflow-x-hidden relative z-10">
           {children}
         </main>
         <Footer />

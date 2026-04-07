@@ -45,23 +45,20 @@ export default function RequestPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white pt-32 pb-20 px-4 flex flex-col items-center">
-      
-      {/* Background Subtle Glow */}
-      <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[400px] bg-neon/5 blur-[100px] rounded-[100%] pointer-events-none"></div>
+    <div className="min-h-screen text-white pt-32 pb-20 px-4 flex flex-col items-center relative">
 
       <div className="max-w-2xl w-full relative z-10 flex flex-col items-center">
         
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neon/10 border border-neon/20 mb-6">
+        <div className="neon-badge mb-6 animate-fade-in">
           <UserPlus className="w-4 h-4 text-neon" />
-          <span className="text-neon text-xs font-semibold uppercase tracking-wider">Request a Custom Tool</span>
+          <span className="text-neon text-xs font-semibold uppercase tracking-widest">Request a Custom Tool</span>
         </div>
 
         {/* Header */}
-        <div className="text-center mb-10">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Tell Us What You Need
+        <div className="text-center mb-10 animate-slide-up">
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">
+            Tell Us What <span className="text-neon-gradient text-glow">You Need</span>
           </h1>
           <p className="text-gray-400 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
             Fill out the form below and we will get back to you within 24 hours with a technical proposal.
@@ -69,11 +66,10 @@ export default function RequestPage() {
         </div>
 
         {/* Form Card */}
-        <div className="bg-[#111111] border border-white/5 rounded-2xl p-6 md:p-8 w-full shadow-2xl">
+        <div className="neon-border-card p-6 md:p-8 w-full animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <form onSubmit={handleSubmit} className="space-y-6">
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Name */}
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-400">Full Name</label>
                 <input
@@ -87,7 +83,6 @@ export default function RequestPage() {
                 />
               </div>
 
-              {/* Email */}
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-400">Email Address</label>
                 <input
@@ -103,7 +98,6 @@ export default function RequestPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Company */}
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-400">Company (Optional)</label>
                 <input
@@ -116,7 +110,6 @@ export default function RequestPage() {
                 />
               </div>
 
-              {/* Budget */}
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-400">Estimated Budget</label>
                 <div className="relative">
@@ -126,11 +119,11 @@ export default function RequestPage() {
                     onChange={handleChange}
                     className="input-field appearance-none cursor-pointer pr-10"
                   >
-                    <option value="" className="bg-[#111]">Select your budget</option>
-                    <option value="₹2,000 – ₹5,000" className="bg-[#111]">₹2,000 – ₹5,000 (Starter)</option>
-                    <option value="₹5,000 – ₹15,000" className="bg-[#111]">₹5,000 – ₹15,000 (Advanced)</option>
-                    <option value="₹15,000+" className="bg-[#111]">₹15,000+ (Enterprise)</option>
-                    <option value="Not sure" className="bg-[#111]">Not sure yet</option>
+                    <option value="" className="bg-[#0c0c12]">Select your budget</option>
+                    <option value="₹2,000 – ₹5,000" className="bg-[#0c0c12]">₹2,000 – ₹5,000 (Starter)</option>
+                    <option value="₹5,000 – ₹15,000" className="bg-[#0c0c12]">₹5,000 – ₹15,000 (Advanced)</option>
+                    <option value="₹15,000+" className="bg-[#0c0c12]">₹15,000+ (Enterprise)</option>
+                    <option value="Not sure" className="bg-[#0c0c12]">Not sure yet</option>
                   </select>
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
                     <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -158,11 +151,11 @@ export default function RequestPage() {
               <NeonButton type="submit" disabled={loading} className="w-full h-12">
                 {loading ? (
                   <>
-                    <Loader2 className="w-5 h-5 animate-spin mr-2" /> Processing...
+                    <Loader2 className="w-5 h-5 animate-spin" /> Processing...
                   </>
                 ) : (
                   <>
-                    <Send className="w-4 h-4 mr-2" /> Submit Request
+                    <Send className="w-4 h-4" /> Submit Request
                   </>
                 )}
               </NeonButton>
